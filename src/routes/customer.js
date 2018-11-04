@@ -28,4 +28,16 @@ router.post('/customer', (req, res) =>{
         })
 })
 
+router.get('/customer', (req, res) => {
+    if (!req.query.email) {
+        return res.status(400).send('Missing URL parameter: email')
+    }
+    CustomerModel.findOne({
+        email: req.query.email
+    })
+        .then(doc => {
+            res.json(doc)
+        })
+        .catch(err =>{})
+})
 module.exports = router
