@@ -1,16 +1,21 @@
 // https://www.youtube.com/watch?v=o3ka5fYysBM&index=7&t=0s&list=PLo2PSuBYZiOodPcZEAK3W7G0aZHRSqfO8
+// mlab créer une instance de mongodb
 let express = require('express')
 let app = express()
-
 let personRoute = require('./routes/person')
-
+let customerRoute = require('./routes/customer')
 let path = require('path')
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
 
 app.use((req, res, next) => {
-    console.log(`${new Date().toString()} => ${req.originalUrl}`)
+    console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body)
     next()
 })
+
 app.use(personRoute)
+app.use(customerRoute)
 app.use(express.static( 'public' ))
 
 // Handler for 404- Resource Not Found
