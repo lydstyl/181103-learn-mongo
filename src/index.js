@@ -1,5 +1,6 @@
 // https://www.youtube.com/watch?v=o3ka5fYysBM&index=7&t=0s&list=PLo2PSuBYZiOodPcZEAK3W7G0aZHRSqfO8
 // mlab créer une instance de mongodb
+// deploy --> https://zeit.co/now
 let express = require('express')
 let app = express()
 let personRoute = require('./routes/person')
